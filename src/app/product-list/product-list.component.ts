@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
-  providers: [ProductService, UserService]
+ // providers: [ProductService, UserService]
 })
 export class ProductListComponent implements OnInit {
 

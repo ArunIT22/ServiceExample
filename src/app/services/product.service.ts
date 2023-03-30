@@ -1,5 +1,13 @@
+import { LogService } from './log.service';
 import { Product } from './../models/product';
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class ProductService {
+
+  constructor(private logService: LogService) {
+
+  }
 
   public productList: Product[] = [];
 
@@ -27,5 +35,12 @@ export class ProductService {
       }
     });
     return newProductList;
+  }
+
+  //Add Product Method
+  public addProduct(product: Product) {
+    console.log("Product Service :", product);
+    this.productList.push(product);
+    this.logService.LogMessage(product.name, product.inStock ? "Available" : "Not Available", new Date());
   }
 }

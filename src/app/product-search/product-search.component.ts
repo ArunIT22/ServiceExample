@@ -6,7 +6,7 @@ import { Product } from '../models/product';
   selector: 'app-product-search',
   templateUrl: './product-search.component.html',
   styleUrls: ['./product-search.component.css'],
-  providers: [ProductService]
+  //providers: [ProductService]
 })
 export class ProductSearchComponent implements OnInit {
   products: Product[] = [];
