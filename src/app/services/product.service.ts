@@ -1,6 +1,7 @@
 import { LogService } from './log.service';
 import { Product } from './../models/product';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -42,5 +43,19 @@ export class ProductService {
     console.log("Product Service :", product);
     this.productList.push(product);
     this.logService.LogMessage(product.name, product.inStock ? "Available" : "Not Available", new Date());
+  }
+
+  //Using Event Emitter
+  // searchedProductEmitter = new EventEmitter<Product[]>();
+
+  // onSearchProduct(products: Product[]) {
+  //   this.searchedProductEmitter.emit(products);
+  // }
+
+  //Using Subject Observable
+  searchedProductEmitter = new Subject<Product[]>();
+
+  onSearchProduct(products: Product[]) {
+    this.searchedProductEmitter.next(products);
   }
 }

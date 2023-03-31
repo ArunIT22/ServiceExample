@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
- // providers: [ProductService, UserService]
+  // providers: [ProductService, UserService]
 })
 export class ProductListComponent implements OnInit {
 
@@ -20,5 +20,12 @@ export class ProductListComponent implements OnInit {
     //const productService = new ProductService();
     this.products = this.productService.getProducts();
     this.userName = this.userService.getCurrentUser();
+
+    this.productService.searchedProductEmitter.subscribe((data) => {
+      if (data.length != 0) {
+        this.products = data;
+      }
+    })
+
   }
 }

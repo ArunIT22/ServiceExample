@@ -19,6 +19,7 @@ export class ProductSearchComponent implements OnInit {
   searchProduct(name: HTMLInputElement) {
     //const productService = new ProductService();
     this.products = this.productService.getProductByName(name.value);
+    this.productService.onSearchProduct(this.products);
   }
 
 }
