@@ -1,7 +1,7 @@
 import { LogService } from './log.service';
 import { Product } from './../models/product';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { AsyncSubject, ReplaySubject, Subject, from } from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -53,7 +53,9 @@ export class ProductService {
   // }
 
   //Using Subject Observable
-  searchedProductEmitter = new Subject<Product[]>();
+  //https://medium.com/front-end-weekly/creating-an-observable-with-angular-part-ii-the-4-different-types-3d8fd2835850
+  //searchedProductEmitter = new Subject<Product[]>();
+  searchedProductEmitter = new ReplaySubject<Product[]>();
 
   onSearchProduct(products: Product[]) {
     this.searchedProductEmitter.next(products);
